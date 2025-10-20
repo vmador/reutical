@@ -70,6 +70,18 @@
   ></iframe>
 
   <script>
+    // Suprimir errores de Service Worker del iframe de Framer (son esperados y seguros)
+    const originalError = console.error;
+    console.error = function(...args) {
+      const errorString = args.join(' ');
+      // Ignorar errores de Service Worker de Framer (origen cruzado)
+      if (errorString.includes('ServiceWorker') && 
+          (errorString.includes('soreutical') || errorString.includes('404'))) {
+        return; // No mostrar este error
+      }
+      originalError.apply(console, args);
+    };
+
     const iframe = document.getElementById("framerContent");
     const baseFramerURL = "https://soreutical.framer.website";
 
