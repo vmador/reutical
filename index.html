@@ -30,14 +30,31 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#404032">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="reutical">
+    <meta property="og:title" content="reutical">
+    <meta property="og:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
+    <meta property="og:image" content="/social-preview.png">
+    <meta property="og:url" content="https://soreutical.framer.website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="reutical">
+    <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
+    <meta name="twitter:image" content="/social-preview.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
+    <link rel="apple-touch-icon" href="/icon-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#404032">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Reutical">
     <meta property="og:title" content="Reutical">
-    <meta property="og:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data â helping you visualize revenue, subscriptions, and performance in one secure place.">
+    <meta property="og:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data Ã¢ÂÂ helping you visualize revenue, subscriptions, and performance in one secure place.">
     <meta property="og:image" content="/social-preview.png">
     <meta property="og:url" content="https://reutical.framer.website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Reutical">
-    <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data â helping you visualize revenue, subscriptions, and performance in one secure place.">
+    <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data Ã¢ÂÂ helping you visualize revenue, subscriptions, and performance in one secure place.">
     <meta name="twitter:image" content="/social-preview.png">
     <style>
         body, html { 
@@ -47,6 +64,25 @@
             overflow: hidden; 
             background-color: #404032; 
         }
+        iframe { 
+            width: 100lvw; 
+            height: 100dvh; 
+            border: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+        }
+        
+        /* Safe Area Mode (Sone style) */
+        @supports(padding: max(0px)) {
+            body, iframe { 
+                padding-top: env(safe-area-inset-top); 
+                height: calc(100dvh - env(safe-area-inset-top)); 
+            }
+        }
+        
         iframe { 
             width: 100lvw; 
             height: 100dvh; 
