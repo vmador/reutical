@@ -230,5 +230,17 @@
     }
     
     </script>
+    <script>
+  // Detecta si el usuario entró con una ruta como /terms o /features
+  const path = window.location.pathname;
+  const iframe = document.getElementById("framerContent");
+
+  if (path !== "/" && path !== "/index.html") {
+    // Limpia el slash inicial y genera la URL completa a Framer
+    const cleanPath = path.replace(/^\/+/, "");
+    iframe.src = `https://soreutical.framer.website/${cleanPath}`;
+  }
+</script>
+
 </body>
 </html>
