@@ -1,0 +1,26 @@
+{
+    "name": "Reutical",
+    "short_name": "Reutical",
+    "description": "Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data — helping you visualize revenue, subscriptions, and performance in one secure place.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#404032",
+    "theme_color": "#404032",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "orientation": "portrait",
+    "prefer_related_applications": false
+}
