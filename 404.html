@@ -29,9 +29,6 @@
   <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
   <meta name="twitter:image" content="/social-preview.png">
 
-  <!-- Content Security Policy - Bloquear Service Workers externos -->
-  <meta http-equiv="Content-Security-Policy" content="worker-src 'self';">
-
   <style>
     body, html { 
       margin: 0; 
@@ -70,31 +67,42 @@
   ></iframe>
 
   <script>
-    // Suprimir errores de Service Worker del iframe de Framer (son esperados y seguros)
-    const originalError = console.error;
-    console.error = function(...args) {
-      const errorString = args.join(' ');
-      // Ignorar errores de Service Worker de Framer (origen cruzado)
-      if (errorString.includes('ServiceWorker') && 
-          (errorString.includes('soreutical') || errorString.includes('404'))) {
-        return; // No mostrar este error
-      }
-      originalError.apply(console, args);
-    };
-
     const iframe = document.getElementById("framerContent");
     const baseFramerURL = "https://soreutical.framer.website";
 
-    // Detectar rutas como /terms, /privacy, /features, etc.
-    const path = window.location.pathname;
-    if (path && path !== "/" && path !== "/index.html" && path !== "/404.html") {
-      const cleanPath = path.replace(/^\/+/, "");
-      iframe.src = `${baseFramerURL}/${cleanPath}`;
+    // Detectar y cargar la ruta correcta
+    function loadFramerRoute() {
+      const path = window.location.pathname;
+      
+      // Si es la raíz o index.html, cargar Framer normal
+      if (path === "/" || path === "/index.html") {
+        iframe.src = baseFramerURL + "/";
+        return;
+      }
+      
+      // Si es 404.html, no hacer nada (ya se manejó arriba)
+      if (path === "/404.html") {
+        return;
+      }
+      
+      // Para cualquier otra ruta, cargarla en Framer
+      // Remover barras iniciales y finales
+      let cleanPath = path.replace(/^\/+|\/+$/g, "");
+      
+      if (cleanPath) {
+        iframe.src = baseFramerURL + "/" + cleanPath;
+        console.log("Cargando ruta:", baseFramerURL + "/" + cleanPath);
+      }
     }
+
+    // Cargar la ruta al inicio
+    loadFramerRoute();
 
     // Comunicación entre Framer y la PWA
     function sendMessageToIframe(message) {
-      iframe.contentWindow.postMessage(message, baseFramerURL);
+      if (iframe.contentWindow) {
+        iframe.contentWindow.postMessage(message, baseFramerURL);
+      }
     }
 
     window.addEventListener("message", function (event) {
@@ -112,7 +120,7 @@
     });
 
     // Restaurar sesión al recargar
-    window.addEventListener("load", function () {
+    iframe.addEventListener("load", function () {
       const sessionData = localStorage.getItem("sessionData");
       if (sessionData) {
         sendMessageToIframe({
@@ -140,7 +148,7 @@
       window.addEventListener("load", function () {
         navigator.serviceWorker.register("/service-worker.js")
           .then(function(registration) {
-            console.log("✅ Service Worker registrado:", registration.scope);
+            console.log("✅ Service Worker registrado correctamente en scope:", registration.scope);
           })
           .catch(function(error) {
             console.error("❌ Error al registrar Service Worker:", error);
@@ -156,6 +164,16 @@
     updateViewportHeight();
     window.addEventListener("resize", updateViewportHeight);
     window.addEventListener("orientationchange", updateViewportHeight);
+
+    // Suprimir errores de Service Worker de Framer en la consola
+    const originalError = console.error;
+    console.error = function(...args) {
+      const errorString = args.join(' ');
+      if (errorString.includes('ServiceWorker') && errorString.includes('soreutical')) {
+        return; // Suprimir este error esperado
+      }
+      originalError.apply(console, args);
+    };
   </script>
 </body>
 </html>
