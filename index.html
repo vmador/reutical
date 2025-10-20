@@ -1,246 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>reutical</title>
-    <meta name="description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
-    <link rel="apple-touch-icon" href="/icon-192x192.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#404032">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="reutical">
-    <meta property="og:title" content="reutical">
-    <meta property="og:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
-    <meta property="og:image" content="/social-preview.png">
-    <meta property="og:url" content="https://soreutical.framer.website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="reutical">
-    <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
-    <meta name="twitter:image" content="/social-preview.png">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
-    <link rel="apple-touch-icon" href="/icon-192x192.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#404032">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="reutical">
-    <meta property="og:title" content="reutical">
-    <meta property="og:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
-    <meta property="og:image" content="/social-preview.png">
-    <meta property="og:url" content="https://soreutical.framer.website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="reutical">
-    <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
-    <meta name="twitter:image" content="/social-preview.png">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
-    <link rel="apple-touch-icon" href="/icon-192x192.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#404032">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="reutical">
-    <meta property="og:title" content="reutical">
-    <meta property="og:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
-    <meta property="og:image" content="/social-preview.png">
-    <meta property="og:url" content="https://soreutical.framer.website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="reutical">
-    <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
-    <meta name="twitter:image" content="/social-preview.png">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
-    <link rel="apple-touch-icon" href="/icon-192x192.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#404032">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Reutical">
-    <meta property="og:title" content="Reutical">
-    <meta property="og:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data ÃÂ¢ÃÂÃÂ helping you visualize revenue, subscriptions, and performance in one secure place.">
-    <meta property="og:image" content="/social-preview.png">
-    <meta property="og:url" content="https://reutical.framer.website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Reutical">
-    <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data ÃÂ¢ÃÂÃÂ helping you visualize revenue, subscriptions, and performance in one secure place.">
-    <meta name="twitter:image" content="/social-preview.png">
-    <style>
-        body, html { 
-            margin: 0; 
-            padding: 0; 
-            height: 100%; 
-            overflow: hidden; 
-            background-color: #404032; 
-        }
-        iframe { 
-            width: 100lvw; 
-            height: 100dvh; 
-            border: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            bottom: 0; 
-        }
-        
-        /* Safe Area Mode (Sone style) */
-        @supports(padding: max(0px)) {
-            body, iframe { 
-                padding-top: env(safe-area-inset-top); 
-                height: calc(100dvh - env(safe-area-inset-top)); 
-            }
-        }
-        
-        iframe { 
-            width: 100lvw; 
-            height: 100dvh; 
-            border: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            bottom: 0; 
-        }
-        
-        /* Safe Area Mode (Sone style) */
-        @supports(padding: max(0px)) {
-            body, iframe { 
-                padding-top: env(safe-area-inset-top); 
-                height: calc(100dvh - env(safe-area-inset-top)); 
-            }
-        }
-        
-        iframe { 
-            width: 100lvw; 
-            height: 100dvh; 
-            border: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            bottom: 0; 
-        }
-        
-        /* Safe Area Mode (Sone style) */
-        @supports(padding: max(0px)) {
-            body, iframe { 
-                padding-top: env(safe-area-inset-top); 
-                height: calc(100dvh - env(safe-area-inset-top)); 
-            }
-        }
-        
-        iframe { 
-            width: 100lvw; 
-            height: 100dvh; 
-            border: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            bottom: 0; 
-        }
-        
-        /* Safe Area Mode (Sone style) */
-        @supports(padding: max(0px)) {
-            body, iframe { 
-                padding-top: env(safe-area-inset-top); 
-                height: calc(100dvh - env(safe-area-inset-top)); 
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>reutical</title>
+  <meta name="description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
+  
+  <!-- Icons & Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
+  <link rel="apple-touch-icon" href="/icon-192x192.png">
+
+  <!-- App & Meta -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#404032">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="reutical">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="reutical">
+  <meta property="og:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
+  <meta property="og:image" content="/social-preview.png">
+  <meta property="og:url" content="https://reutical.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="reutical">
+  <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
+  <meta name="twitter:image" content="/social-preview.png">
+
+  <style>
+    body, html { 
+      margin: 0; 
+      padding: 0; 
+      height: 100%; 
+      overflow: hidden; 
+      background-color: #404032; 
+    }
+
+    iframe { 
+      width: 100lvw; 
+      height: 100dvh; 
+      border: none; 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0; 
+    }
+
+    @supports(padding: max(0px)) {
+      body, iframe { 
+        padding-top: env(safe-area-inset-top); 
+        height: calc(100dvh - env(safe-area-inset-top)); 
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <iframe id="framerContent" src="https://soreutical.framer.website/" allowfullscreen allow="geolocation; camera; microphone; storage-access"></iframe>
-    
-    
-    <script>
+  <iframe
+    id="framerContent"
+    src="https://soreutical.framer.website/"
+    allowfullscreen
+    allow="geolocation; camera; microphone; storage-access"
+  ></iframe>
+
+  <script>
+    const iframe = document.getElementById("framerContent");
+    const baseFramerURL = "https://soreutical.framer.website";
+
+    // Detectar rutas como /terms, /privacy, /features, etc.
+    const path = window.location.pathname;
+    if (path && path !== "/" && path !== "/index.html") {
+      const cleanPath = path.replace(/^\/+/, "");
+      iframe.src = `${baseFramerURL}/${cleanPath}`;
+    }
+
+    // Comunicación entre Framer y la PWA
     function sendMessageToIframe(message) {
-        const iframe = document.getElementById('framerContent');
-        iframe.contentWindow.postMessage(message, 'https://soreutical.framer.website/');
+      iframe.contentWindow.postMessage(message, baseFramerURL);
     }
-    
-    window.addEventListener('message', function(event) {
-        if (event.origin !== "https://soreutical.framer.website/") return;
-        
-        if (event.data.type === 'setSessionData') {
-            localStorage.setItem('sessionData', JSON.stringify(event.data.sessionData));
-        } else if (event.data.type === 'getSessionData') {
-            const sessionData = localStorage.getItem('sessionData');
-            sendMessageToIframe({
-                type: 'sessionDataResponse',
-                sessionData: sessionData ? JSON.parse(sessionData) : null
-            });
-        }
-    }, false);
 
-    window.addEventListener('load', function() {
-        const sessionData = localStorage.getItem('sessionData');
-        if (sessionData) {
-            sendMessageToIframe({
-                type: 'restoreSession',
-                sessionData: JSON.parse(sessionData)
-            });
-        }
-    });
+    window.addEventListener("message", function (event) {
+      if (event.origin !== baseFramerURL) return;
 
-    document.addEventListener('visibilitychange', function() {
-        if (!document.hidden) {
-            const sessionData = localStorage.getItem('sessionData');
-            if (sessionData) {
-                sendMessageToIframe({
-                    type: 'restoreSession',
-                    sessionData: JSON.parse(sessionData)
-                });
-            }
-        }
-    });
-
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-                // Registration successful
-            }, function(err) {
-                // Registration failed
-            });
+      if (event.data.type === "setSessionData") {
+        localStorage.setItem("sessionData", JSON.stringify(event.data.sessionData));
+      } else if (event.data.type === "getSessionData") {
+        const sessionData = localStorage.getItem("sessionData");
+        sendMessageToIframe({
+          type: "sessionDataResponse",
+          sessionData: sessionData ? JSON.parse(sessionData) : null,
         });
+      }
+    });
+
+    // Restaurar sesión al recargar
+    window.addEventListener("load", function () {
+      const sessionData = localStorage.getItem("sessionData");
+      if (sessionData) {
+        sendMessageToIframe({
+          type: "restoreSession",
+          sessionData: JSON.parse(sessionData),
+        });
+      }
+    });
+
+    // Reenviar datos al volver al foco
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) {
+        const sessionData = localStorage.getItem("sessionData");
+        if (sessionData) {
+          sendMessageToIframe({
+            type: "restoreSession",
+            sessionData: JSON.parse(sessionData),
+          });
+        }
+      }
+    });
+
+    // Registrar Service Worker
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/service-worker.js");
+      });
     }
 
-    
-    // Dynamic viewport adjustment for dvh units
+    // Ajuste dinámico de altura de viewport (para mobile)
     function updateViewportHeight() {
-        document.documentElement.style.setProperty('--dvh', window.innerHeight + 'px');
+      document.documentElement.style.setProperty("--dvh", window.innerHeight + "px");
     }
 
-    if ('dvh' === 'dvh') {
-        // Set initial value
-        updateViewportHeight();
-        
-        // Update on resize or orientation change
-        window.addEventListener('resize', updateViewportHeight);
-        window.addEventListener('orientationchange', updateViewportHeight);
-    }
-    
-    </script>
-    <script>
-  // Detecta si el usuario entró con una ruta como /terms o /features
-  const path = window.location.pathname;
-  const iframe = document.getElementById("framerContent");
-
-  if (path !== "/" && path !== "/index.html") {
-    // Limpia el slash inicial y genera la URL completa a Framer
-    const cleanPath = path.replace(/^\/+/, "");
-    iframe.src = `https://soreutical.framer.website/${cleanPath}`;
-  }
-</script>
-
+    updateViewportHeight();
+    window.addEventListener("resize", updateViewportHeight);
+    window.addEventListener("orientationchange", updateViewportHeight);
+  </script>
 </body>
 </html>
