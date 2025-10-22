@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>reutical</title>
-  <meta name="description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
-  
-  <!-- Icons & Manifest -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>reutical</title>
+    <meta name="description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
+    <link rel="apple-touch-icon" href="/icon-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="reutical">
+    <meta property="og:title" content="reutical">
+    <meta property="og:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
+    <meta property="og:image" content="/social-preview.png">
+    <meta property="og:url" content="https://soreutical.framer.website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="reutical">
+    <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
+    <meta name="twitter:image" content="/social-preview.png">
+    <!-- Icons & Manifest -->
   <link rel="manifest" href="/manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
@@ -28,17 +44,34 @@
   <meta name="twitter:title" content="reutical">
   <meta name="twitter:description" content="Reutical is a smart dashboard that connects your Supabase projects, webhooks, and business data helping you visualize revenue, subscriptions, and performance in one secure place.">
   <meta name="twitter:image" content="/social-preview.png">
-
-  <style>
-    body, html { 
-      margin: 0; 
-      padding: 0; 
-      height: 100%; 
-      overflow: hidden; 
-      background-color: #404032; 
-    }
-
-    iframe { 
+    <style>
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            overflow: hidden; 
+            background-color: #000000; 
+        }
+        iframe { 
+            width: 100lvw; 
+            height: 100dvh; 
+            border: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+        }
+        
+        /* Safe Area Mode (Sone style) */
+        @supports(padding: max(0px)) {
+            body, iframe { 
+                padding-top: env(safe-area-inset-top); 
+                height: calc(100dvh - env(safe-area-inset-top)); 
+            }
+        }
+        
+        iframe { 
       width: 100lvw; 
       height: 100dvh; 
       border: none; 
@@ -55,125 +88,79 @@
         height: calc(100dvh - env(safe-area-inset-top)); 
       }
     }
-  </style>
+    </style>
 </head>
-
 <body>
-  <iframe
-    id="framerContent"
-    src="https://soreutical.framer.website/"
-    allowfullscreen
-    allow="geolocation; camera; microphone; storage-access"
-  ></iframe>
-
-  <script>
-    const iframe = document.getElementById("framerContent");
-    const baseFramerURL = "https://soreutical.framer.website";
-
-    // Detectar y cargar la ruta correcta
-    function loadFramerRoute() {
-      const path = window.location.pathname;
-      
-      // Si es la raíz o index.html, cargar Framer normal
-      if (path === "/" || path === "/index.html") {
-        iframe.src = baseFramerURL + "/";
-        return;
-      }
-      
-      // Si es 404.html, no hacer nada (ya se manejó arriba)
-      if (path === "/404.html") {
-        return;
-      }
-      
-      // Para cualquier otra ruta, cargarla en Framer
-      // Remover barras iniciales y finales
-      let cleanPath = path.replace(/^\/+|\/+$/g, "");
-      
-      if (cleanPath) {
-        iframe.src = baseFramerURL + "/" + cleanPath;
-        console.log("Cargando ruta:", baseFramerURL + "/" + cleanPath);
-      }
-    }
-
-    // Cargar la ruta al inicio
-    loadFramerRoute();
-
-    // Comunicación entre Framer y la PWA
+    <iframe id="framerContent" src="https://soreutical.framer.website/" allowfullscreen allow="geolocation; camera; microphone; storage-access"></iframe>
+    
+    
+    <script>
     function sendMessageToIframe(message) {
-      if (iframe.contentWindow) {
-        iframe.contentWindow.postMessage(message, baseFramerURL);
-      }
+        const iframe = document.getElementById('framerContent');
+        iframe.contentWindow.postMessage(message, 'https://soreutical.framer.website/');
     }
-
-    window.addEventListener("message", function (event) {
-      if (event.origin !== baseFramerURL) return;
-
-      if (event.data.type === "setSessionData") {
-        localStorage.setItem("sessionData", JSON.stringify(event.data.sessionData));
-      } else if (event.data.type === "getSessionData") {
-        const sessionData = localStorage.getItem("sessionData");
-        sendMessageToIframe({
-          type: "sessionDataResponse",
-          sessionData: sessionData ? JSON.parse(sessionData) : null,
-        });
-      }
-    });
-
-    // Restaurar sesión al recargar
-    iframe.addEventListener("load", function () {
-      const sessionData = localStorage.getItem("sessionData");
-      if (sessionData) {
-        sendMessageToIframe({
-          type: "restoreSession",
-          sessionData: JSON.parse(sessionData),
-        });
-      }
-    });
-
-    // Reenviar datos al volver al foco
-    document.addEventListener("visibilitychange", function () {
-      if (!document.hidden) {
-        const sessionData = localStorage.getItem("sessionData");
-        if (sessionData) {
-          sendMessageToIframe({
-            type: "restoreSession",
-            sessionData: JSON.parse(sessionData),
-          });
+    
+    window.addEventListener('message', function(event) {
+        if (event.origin !== "https://soreutical.framer.website/") return;
+        
+        if (event.data.type === 'setSessionData') {
+            localStorage.setItem('sessionData', JSON.stringify(event.data.sessionData));
+        } else if (event.data.type === 'getSessionData') {
+            const sessionData = localStorage.getItem('sessionData');
+            sendMessageToIframe({
+                type: 'sessionDataResponse',
+                sessionData: sessionData ? JSON.parse(sessionData) : null
+            });
         }
-      }
+    }, false);
+
+    window.addEventListener('load', function() {
+        const sessionData = localStorage.getItem('sessionData');
+        if (sessionData) {
+            sendMessageToIframe({
+                type: 'restoreSession',
+                sessionData: JSON.parse(sessionData)
+            });
+        }
     });
 
-    // Registrar Service Worker con ruta absoluta
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker.register("/service-worker.js")
-          .then(function(registration) {
-            console.log("✅ Service Worker registrado correctamente en scope:", registration.scope);
-          })
-          .catch(function(error) {
-            console.error("❌ Error al registrar Service Worker:", error);
-          });
-      });
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+            const sessionData = localStorage.getItem('sessionData');
+            if (sessionData) {
+                sendMessageToIframe({
+                    type: 'restoreSession',
+                    sessionData: JSON.parse(sessionData)
+                });
+            }
+        }
+    });
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                // Registration successful
+            }, function(err) {
+                // Registration failed
+            });
+        });
     }
 
-    // Ajuste dinámico de altura de viewport (para mobile)
+    
+    // Dynamic viewport adjustment for dvh units
     function updateViewportHeight() {
-      document.documentElement.style.setProperty("--dvh", window.innerHeight + "px");
+        document.documentElement.style.setProperty('--dvh', window.innerHeight + 'px');
     }
 
-    updateViewportHeight();
-    window.addEventListener("resize", updateViewportHeight);
-    window.addEventListener("orientationchange", updateViewportHeight);
-
-    // Suprimir errores de Service Worker de Framer en la consola
-    const originalError = console.error;
-    console.error = function(...args) {
-      const errorString = args.join(' ');
-      if (errorString.includes('ServiceWorker') && errorString.includes('soreutical')) {
-        return; // Suprimir este error esperado
-      }
-      originalError.apply(console, args);
-    };
-  </script>
+    if ('dvh' === 'dvh') {
+        // Set initial value
+        updateViewportHeight();
+        
+        // Update on resize or orientation change
+        window.addEventListener('resize', updateViewportHeight);
+        window.addEventListener('orientationchange', updateViewportHeight);
+    }
+    
+    </script>
 </body>
 </html>
